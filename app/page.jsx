@@ -11,44 +11,44 @@ import { categorizedProducts } from "./shop-data";
 const asset = (name) => `/assets/${name}`;
 
 const menuLinks = [
-  { label: "Home", href: "/", kind: "home" },
-  { label: "New In", href: "#lookbook", kind: "anchor" },
-  { label: "Lookbook", href: "#styled", kind: "anchor" },
-  { label: "Products", href: "/shop", kind: "shop" },
-  { label: "About Us", href: "https://www.douyin.com/search/Pansk88888?type=user", kind: "external" },
+  { label: "首页", href: "/", kind: "home" },
+  { label: "新品", href: "#lookbook", kind: "anchor" },
+  { label: "穿搭", href: "#styled", kind: "anchor" },
+  { label: "全部商品", href: "/shop", kind: "shop" },
+  { label: "关于 PANSK", href: "https://www.douyin.com/search/Pansk88888?type=user", kind: "external" },
 ];
 
 const heroSlides = [
   {
     image: "hero-new-01.png",
     trigger: "01",
-    label: "PANSK Since 2023",
-    title: "THE NEW",
-    subtitle: "DAILY UNIFORM",
+    label: "PANSK 自 2023",
+    title: "新的日常",
+    subtitle: "去见最好的人",
     objectPosition: "center 46%",
   },
   {
     image: "hero-new-02.png",
     trigger: "02",
-    label: "Daily Uniforms For Young Men",
-    title: "DENIM",
-    subtitle: "UTILITY MOVEMENT",
+    label: "感恩您的上身",
+    title: "丹宁",
+    subtitle: "工装与城市",
     objectPosition: "center 42%",
   },
   {
     image: "hero-new-03.png",
     trigger: "03",
-    label: "Street Movement",
-    title: "YOUNG",
-    subtitle: "MENSWEAR",
+    label: "年轻人的日常穿搭",
+    title: "少年",
+    subtitle: "去天涯海角",
     objectPosition: "center 47%",
   },
   {
     image: "hero-new-04.png",
     trigger: "04",
-    label: "Denim / Utility / Street",
-    title: "CITY",
-    subtitle: "UNIFORM",
+    label: "丹宁 / 工装 / 街头",
+    title: "城市",
+    subtitle: "日常制服",
     objectPosition: "center 43%",
   },
 ];
@@ -67,14 +67,14 @@ const featuredProductIds = [
 
 const categorizedProductById = new Map(categorizedProducts.map((product) => [product.id, product]));
 const homeProductMeta = {
-  "light-blue-denim-jacket": ["Washed Denim Jacket", "浅蓝水洗牛仔夹克"],
-  "pansk-punk-cat-tee-white": ["Punk Cat Tee", "朋克猫 T"],
-  "salt-wash-boxy-jacket": ["Salt Wash Detroit Jacket", "水洗炒盐夹克"],
-  "indigo-14oz-whisker-jeans": ["Indigo Whisker Jeans", "靛蓝猫须牛仔裤"],
-  "branch-maple-camo-cargo": ["Maple Camo Cargo", "树枝枫叶工装裤"],
-  "coffee-wash-denim-jeans": ["Coffee Wash Denim", "咖啡水洗牛"],
-  "five-button-kanglong-raw-denim": ["Raw Black Denim", "五连扣原牛牛仔裤"],
-  "deep-blue-14oz-honeycomb-jeans": ["Honeycomb Wash Denim", "蜂窝猫须牛仔裤"],
+  "light-blue-denim-jacket": ["浅蓝水洗牛仔夹克", "穿去风里，也穿进日常"],
+  "pansk-punk-cat-tee-white": ["朋克猫短袖 T", "把少年感穿在身上"],
+  "salt-wash-boxy-jacket": ["水洗炒盐夹克", "旧得刚好，新的出发"],
+  "indigo-14oz-whisker-jeans": ["靛蓝猫须牛仔裤", "陪你走很远的路"],
+  "branch-maple-camo-cargo": ["树枝枫叶工装裤", "去城市，也去旷野"],
+  "coffee-wash-denim-jeans": ["咖啡水洗牛仔裤", "温柔一点的复古"],
+  "five-button-kanglong-raw-denim": ["五连扣原牛牛仔裤", "把时间穿成质感"],
+  "deep-blue-14oz-honeycomb-jeans": ["蜂窝猫须牛仔裤", "为奔赴而生"],
 };
 const withHomeProductMeta = (product) => {
   const meta = homeProductMeta[product.id];
@@ -92,30 +92,30 @@ const featuredProducts = featuredProductIds
   .map(withHomeProductMeta);
 
 const streetFitArchive = [
-  ["community-fit-01.jpg", "CAMO CARGO / BLACK TEE", "-34vw", "-17vh", "-10deg", "0.92"],
-  ["community-fit-02.jpg", "WASHED DENIM / CITY LAYER", "-19vw", "18vh", "7deg", "1"],
-  ["community-fit-03.jpg", "BLACK TEE / LOOSE DENIM", "0vw", "-23vh", "-4deg", "0.96"],
-  ["community-fit-04.jpg", "UTILITY JACKET / RELAXED PANTS", "23vw", "15vh", "9deg", "1.03"],
-  ["community-fit-05.jpg", "WHITE TEE / WIDE PANTS", "36vw", "-16vh", "-8deg", "0.9"],
-  ["community-fit-06.jpg", "DENIM SHIRT / STREET UNIFORM", "-39vw", "14vh", "5deg", "0.88"],
-  ["community-fit-07.jpg", "RAW DENIM / DAILY FIT", "-24vw", "-30vh", "11deg", "0.9"],
-  ["community-fit-08.jpg", "GRAPHIC TEE / BLUE DENIM", "13vw", "29vh", "-7deg", "1"],
-  ["community-fit-09.jpg", "UTILITY PANTS / BLACK LAYER", "39vw", "23vh", "6deg", "0.92"],
-  ["community-fit-10.jpg", "WASHED JACKET / WORK PANTS", "-5vw", "24vh", "4deg", "0.97"],
-  ["community-fit-11.jpg", "BLACK DENIM / CLEANFIT", "7vw", "-4vh", "-12deg", "0.86"],
-  ["community-fit-12.jpg", "LOOSE DENIM / ON BODY", "30vw", "-32vh", "12deg", "0.89"],
-  ["community-fit-13.jpg", "CITY WALK / BLACK LAYER", "-43vw", "-2vh", "13deg", "0.82"],
-  ["community-fit-14.jpg", "DAILY DENIM / WHITE TEE", "-31vw", "31vh", "-13deg", "0.86"],
-  ["community-fit-15.jpg", "RELAXED FIT / STREET PANTS", "-16vw", "-38vh", "6deg", "0.84"],
-  ["community-fit-16.jpg", "ON BODY / URBAN SNAP", "18vw", "-37vh", "-15deg", "0.83"],
-  ["community-fit-17.jpg", "LOOSE PANTS / CLEAN TOP", "43vw", "3vh", "14deg", "0.82"],
-  ["community-fit-18.jpg", "BLACK TEE / DAILY DENIM", "31vw", "34vh", "-10deg", "0.86"],
-  ["community-fit-19.jpg", "WIDE LEG / COMMUNITY FIT", "-41vw", "36vh", "8deg", "0.8"],
-  ["community-fit-20.jpg", "STREET UNIFORM / ON BODY", "-8vw", "38vh", "-5deg", "0.83"],
-  ["community-fit-21.jpg", "UTILITY MOOD / CITY FIT", "6vw", "-40vh", "10deg", "0.82"],
-  ["community-fit-22.jpg", "DENIM MOVEMENT / REAL FIT", "42vw", "-36vh", "-6deg", "0.8"],
-  ["community-fit-23.jpg", "YOUNG MENSWEAR / SNAP", "0vw", "7vh", "15deg", "0.78"],
-  ["community-fit-24.jpg", "DAILY UNIFORM / PANSK", "-28vw", "0vh", "-16deg", "0.8"],
+  ["community-fit-01.jpg", "迷彩工装 / 黑色短袖", "-34vw", "-17vh", "-10deg", "0.92"],
+  ["community-fit-02.jpg", "水洗牛仔 / 城市层次", "-19vw", "18vh", "7deg", "1"],
+  ["community-fit-03.jpg", "黑色短袖 / 宽松牛仔", "0vw", "-23vh", "-4deg", "0.96"],
+  ["community-fit-04.jpg", "工装夹克 / 松弛长裤", "23vw", "15vh", "9deg", "1.03"],
+  ["community-fit-05.jpg", "白色短袖 / 宽腿长裤", "36vw", "-16vh", "-8deg", "0.9"],
+  ["community-fit-06.jpg", "丹宁衬衫 / 日常制服", "-39vw", "14vh", "5deg", "0.88"],
+  ["community-fit-07.jpg", "原牛丹宁 / 今日出发", "-24vw", "-30vh", "11deg", "0.9"],
+  ["community-fit-08.jpg", "图案短袖 / 蓝色牛仔", "13vw", "29vh", "-7deg", "1"],
+  ["community-fit-09.jpg", "工装长裤 / 黑色叠穿", "39vw", "23vh", "6deg", "0.92"],
+  ["community-fit-10.jpg", "水洗夹克 / 工装长裤", "-5vw", "24vh", "4deg", "0.97"],
+  ["community-fit-11.jpg", "黑色丹宁 / 干净出门", "7vw", "-4vh", "-12deg", "0.86"],
+  ["community-fit-12.jpg", "宽松牛仔 / 真实上身", "30vw", "-32vh", "12deg", "0.89"],
+  ["community-fit-13.jpg", "城市漫游 / 黑色层次", "-43vw", "-2vh", "13deg", "0.82"],
+  ["community-fit-14.jpg", "日常丹宁 / 白色短袖", "-31vw", "31vh", "-13deg", "0.86"],
+  ["community-fit-15.jpg", "松弛廓形 / 街头长裤", "-16vw", "-38vh", "6deg", "0.84"],
+  ["community-fit-16.jpg", "真实上身 / 城市快照", "18vw", "-37vh", "-15deg", "0.83"],
+  ["community-fit-17.jpg", "宽松长裤 / 干净上衣", "43vw", "3vh", "14deg", "0.82"],
+  ["community-fit-18.jpg", "黑色短袖 / 日常丹宁", "31vw", "34vh", "-10deg", "0.86"],
+  ["community-fit-19.jpg", "宽腿裤型 / 社区穿搭", "-41vw", "36vh", "8deg", "0.8"],
+  ["community-fit-20.jpg", "街头制服 / 真实上身", "-8vw", "38vh", "-5deg", "0.83"],
+  ["community-fit-21.jpg", "工装情绪 / 城市穿搭", "6vw", "-40vh", "10deg", "0.82"],
+  ["community-fit-22.jpg", "丹宁流动 / 真实穿着", "42vw", "-36vh", "-6deg", "0.8"],
+  ["community-fit-23.jpg", "年轻男装 / 日常快照", "0vw", "7vh", "15deg", "0.78"],
+  ["community-fit-24.jpg", "日常制服 / PANSK", "-28vw", "0vh", "-16deg", "0.8"],
 ].map(([image, item, , , rotate], index) => {
   const cardHeights = ["420px", "500px", "380px", "460px", "540px", "430px"];
   const safeRotate = Math.max(-8, Math.min(8, Number.parseFloat(rotate)));
@@ -125,64 +125,64 @@ const streetFitArchive = [
   rotate: `${safeRotate}deg`,
   height: cardHeights[index % cardHeights.length],
   delay: `${index * 55}ms`,
-  number: `ON BODY ${String(index + 1).padStart(2, "0")}`,
+  number: `上身 ${String(index + 1).padStart(2, "0")}`,
   };
 });
 
 const lookCards = [
   {
     id: "look-card-01",
-    number: "LOOK 01",
-    title: "Street Denim Fit",
-    subtitle: "Black Tee / Loose Denim",
+    number: "造型 01",
+    title: "去见远方",
+    subtitle: "黑色短袖 / 宽松牛仔",
     productIds: ["pansk-punk-cat-tee-white", "indigo-14oz-whisker-jeans"],
     image: "look-card-01.jpg",
   },
   {
     id: "look-card-02",
-    number: "LOOK 02",
-    title: "City Utility Layer",
-    subtitle: "Washed Jacket / Daily Pants",
+    number: "造型 02",
+    title: "城市里也有风",
+    subtitle: "水洗夹克 / 日常长裤",
     productIds: ["light-blue-denim-jacket", "plain-12oz-denim-jeans"],
     image: "look-card-02.jpg",
   },
   {
     id: "look-card-03",
-    number: "LOOK 03",
-    title: "Cleanfit Street",
-    subtitle: "Salt Wash Jacket / Coffee Denim",
+    number: "造型 03",
+    title: "把旧时光穿新",
+    subtitle: "炒盐夹克 / 咖啡牛仔",
     productIds: ["salt-wash-boxy-jacket", "coffee-wash-denim-jeans"],
     image: "look-card-03.jpg",
   },
   {
     id: "look-card-04",
-    number: "LOOK 04",
-    title: "Camo Movement",
-    subtitle: "Punk Cat Tee / Utility Cargo",
+    number: "造型 04",
+    title: "向旷野出发",
+    subtitle: "朋克猫短袖 / 迷彩工装",
     productIds: ["pansk-punk-cat-tee-white", "branch-maple-camo-cargo"],
     image: "look-card-04.jpg",
   },
   {
     id: "look-card-05",
-    number: "LOOK 05",
-    title: "Raw Denim Study",
-    subtitle: "Raw Black Denim / Deep Blue Wash",
+    number: "造型 05",
+    title: "让时间留下痕迹",
+    subtitle: "黑色原牛 / 深蓝水洗",
     productIds: ["five-button-kanglong-raw-denim", "deep-blue-14oz-honeycomb-jeans"],
     image: "look-card-05.jpg",
   },
   {
     id: "look-card-06",
-    number: "LOOK 06",
-    title: "Garage Daily Fit",
-    subtitle: "Graphic Tee / Straight Denim",
+    number: "造型 06",
+    title: "今天也要好好出门",
+    subtitle: "图案短袖 / 直筒牛仔",
     productIds: ["pansk-punk-cat-tee-white", "plain-12oz-denim-jeans"],
     image: "look-card-06.jpg",
   },
   {
     id: "look-card-07",
-    number: "LOOK 07",
-    title: "Loose Uniform",
-    subtitle: "Washed Denim / City Layer",
+    number: "造型 07",
+    title: "松弛地去生活",
+    subtitle: "水洗丹宁 / 城市层次",
     productIds: ["light-blue-denim-jacket", "coffee-wash-denim-jeans"],
     image: "look-card-07.jpg",
   },
@@ -221,41 +221,41 @@ function ProductRail({ products, onQuickView }) {
   const marqueeDuration = `${products.length * PRODUCT_RAIL_SECONDS_PER_ITEM}s`;
 
   return (
-    <div className="category-rail border-t border-black/15 py-8">
-      <div className="products-marquee" aria-label="Featured product rail">
+    <div className="category-rail product-wall-rail">
+      <div className="products-marquee" aria-label="精选商品滚动展示">
         <div className="products-marquee__track" style={{ "--marquee-duration": marqueeDuration }}>
           {railProducts.map((product, index) => (
             <article
               key={`featured-${product.id}-${index}`}
               className="showcase-product category-product group"
-              data-cursor="View"
+              data-cursor="查看"
               onClick={() => onQuickView(product)}
             >
-              <div className="relative h-[58vh] min-h-[460px] overflow-hidden bg-[#efefed]">
+              <div className="showcase-product__canvas relative overflow-hidden">
                 <Image
                   className={`showcase-product__front absolute inset-0 h-full w-full transition duration-700 ease-brand ${
-                    product.imageFit === "cover" ? "object-cover p-0" : "object-contain p-[3.5vw]"
+                    product.imageFit === "cover" ? "object-contain p-[clamp(8px,1vw,18px)]" : "object-contain p-[clamp(8px,1vw,18px)]"
                   }`}
                   src={asset(product.front)}
-                  alt={`${product.name} product view`}
+                  alt={`${product.name} 单品图`}
                   fill
-                  sizes="30vw"
+                  sizes="(max-width: 900px) 86vw, 38vw"
                 />
                 <Image
                   className={`showcase-product__back absolute inset-0 h-full w-full opacity-0 transition duration-700 ease-brand ${
-                    product.hoverFit === "cover" ? "object-cover p-0" : "object-contain p-[3.5vw]"
+                    product.hoverFit === "cover" ? "object-contain p-[clamp(8px,1vw,18px)]" : "object-contain p-[clamp(8px,1vw,18px)]"
                   }`}
                   src={asset(product.back)}
-                  alt={`${product.name} worn view`}
+                  alt={`${product.name} 上身图`}
                   fill
-                  sizes="30vw"
+                  sizes="(max-width: 900px) 86vw, 38vw"
                 />
-                <div className="showcase-product__panel absolute inset-x-4 bottom-4 translate-y-[115%] border border-black/10 bg-[#F8F8F6]/88 p-5 backdrop-blur-md transition duration-300 ease-brand group-hover:translate-y-0">
-                  <div className="grid grid-cols-[1fr_auto] gap-4 text-sm font-black uppercase leading-none">
+                <div className="showcase-product__panel absolute bottom-5 left-5 right-5 transition duration-500 ease-brand">
+                  <div className="grid grid-cols-[1fr_auto] gap-4 text-[11px] font-black uppercase leading-none tracking-[0.14em]">
                     <h3>{product.displayTitle || product.name}</h3>
-                    <ArrowUpRight size={18} />
+                    <ArrowUpRight size={14} />
                   </div>
-                  <p className="mt-2 text-xs uppercase tracking-[0.12em] text-ink/55">{product.displaySubtitle || product.note}</p>
+                  <p className="mt-2 text-[10px] uppercase tracking-[0.16em] text-ink/45">{product.displaySubtitle || product.note}</p>
                 </div>
               </div>
             </article>
@@ -298,12 +298,11 @@ function LookStackSection({ onOpenLook }) {
     <section id="styled" className="look-stack-section">
         <div className="look-stack-stage reveal">
         <div className="look-stack-topline">
-          <p>OFFICIAL SELECTED FITS</p>
           <p>{String(activeIndex + 1).padStart(2, "0")} / {String(lookCards.length).padStart(2, "0")}</p>
         </div>
         <div
           className="look-stack-deck"
-          aria-label="PANSK styled outfit cards"
+          aria-label="PANSK 精选穿搭卡片"
           onPointerDown={startDrag}
           onPointerMove={moveDrag}
           onPointerUp={endDrag}
@@ -331,37 +330,24 @@ function LookStackSection({ onOpenLook }) {
                   zIndex,
                 }}
                 onClick={() => {
-                  if (!isActive) goToLook(lookIndex);
+                  if (!isActive) {
+                    goToLook(lookIndex);
+                    return;
+                  }
+                  onOpenLook(look);
                 }}
               >
-                <div className="look-stack-card-lift" data-cursor={isActive ? "View" : "Focus"}>
+                <div className="look-stack-card-lift" data-cursor={isActive ? "查看" : "聚焦"}>
                   <div className="look-card-media">
                     <Image
                       className="look-card-frame is-active"
                       src={asset(look.image)}
-                      alt={`${look.title} outfit`}
+                      alt={`${look.title} 穿搭`}
                       fill
                       sizes="32vw"
                       quality={88}
                       draggable={false}
                     />
-                  </div>
-                  <div className="look-card-caption">
-                    <p>{look.number}</p>
-                    <h3>{look.title}</h3>
-                    <span>{look.subtitle}</span>
-                    {isActive ? (
-                      <button
-                        className="look-card-cta"
-                        type="button"
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          onOpenLook(look);
-                        }}
-                      >
-                        View Look <ArrowUpRight size={15} />
-                      </button>
-                    ) : null}
                   </div>
                 </div>
               </article>
@@ -369,14 +355,14 @@ function LookStackSection({ onOpenLook }) {
           })}
         </div>
         <div className="look-stack-controls">
-          <button type="button" aria-label="Previous look" onClick={() => goToLook(activeIndex - 1)}>
-            Prev
+          <button type="button" aria-label="上一套穿搭" onClick={() => goToLook(activeIndex - 1)}>
+            上一套
           </button>
           <div className="look-stack-progress">
             <span style={{ transform: `scaleX(${(activeIndex + 1) / lookCards.length})` }} />
           </div>
-          <button type="button" aria-label="Next look" onClick={() => goToLook(activeIndex + 1)}>
-            Next
+          <button type="button" aria-label="下一套穿搭" onClick={() => goToLook(activeIndex + 1)}>
+            下一套
           </button>
         </div>
       </div>
@@ -391,14 +377,14 @@ function ShopLookDrawer({ look, onClose, onQuickView }) {
   return (
     <div className="shop-look-overlay" onClick={onClose}>
       <aside className="shop-look-drawer" onClick={(event) => event.stopPropagation()}>
-        <button className="shop-look-close" type="button" onClick={onClose} aria-label="Close shop the look">
+        <button className="shop-look-close" type="button" onClick={onClose} aria-label="关闭穿搭详情">
           <X size={18} />
         </button>
         <div className="shop-look-image">
-          <Image src={asset(look.image)} alt={`${look.title} look`} fill sizes="44vw" quality={88} />
+          <Image src={asset(look.image)} alt={`${look.title} 造型`} fill sizes="44vw" quality={88} />
         </div>
         <div className="shop-look-content">
-          <p className="text-xs uppercase tracking-[0.18em] text-bone/45">Shop the Look</p>
+          <p className="text-xs uppercase tracking-[0.18em] text-bone/45">穿这一套</p>
           <h2>{look.title}</h2>
           <p>{look.subtitle}</p>
           <div className="shop-look-products">
@@ -411,7 +397,7 @@ function ShopLookDrawer({ look, onClose, onQuickView }) {
                   <p>{homeProductMeta[product.id]?.[1] || product.note}</p>
                   <h3>{homeProductMeta[product.id]?.[0] || product.name}</h3>
                   <button type="button" onClick={() => onQuickView(product)}>
-                    View Product <ArrowUpRight size={13} />
+                    查看单品 <ArrowUpRight size={13} />
                   </button>
                 </section>
               </article>
@@ -500,16 +486,12 @@ function StreetFitArchiveSection() {
         <span>PANSK</span>
       </div>
       <div className="street-fit-heading">
-        <div>
-          <SectionKicker>( Street Fit Archive )</SectionKicker>
-          <h2>STREET FIT ARCHIVE</h2>
-        </div>
         <div className="street-fit-heading-copy">
-          <p>Real fits from the PANSK community</p>
-          <span>真实上身 / 年轻人的日常穿搭</span>
+          <p>感恩每一次上身，让衣服有了意义与温度</p>
+          <span>真实上身 / 去生活里见最好的人</span>
         </div>
       </div>
-      <div className="street-fit-wall" aria-label="Real on-body PANSK fit archive">
+      <div className="street-fit-wall" aria-label="PANSK 真实上身档案">
         {visibleFits.map((fit, index) => (
           <article
             key={fit.image}
@@ -665,31 +647,31 @@ function FinalBrandTraceFooter() {
       </div>
       <div className="final-brand-poster">
         <h2>PANSK</h2>
-        <p>DAILY UNIFORMS FOR YOUNG MEN</p>
-        <span>Denim / Utility / Street Movement</span>
+        <p>感恩您的上身，赋予它意义与温度</p>
+        <span>丹宁 / 工装 / 去天涯海角</span>
       </div>
-      <nav className="final-footer-links" aria-label="Footer">
+      <nav className="final-footer-links" aria-label="页脚导航">
         <a href="https://www.douyin.com/search/Pansk88888?type=user" target="_blank" rel="noreferrer">
-          ABOUT US <ArrowUpRight size={13} />
+          关于我们 <ArrowUpRight size={13} />
         </a>
         <a href="/shop">
-          OUR PRODUCTS <ArrowUpRight size={13} />
+          全部商品 <ArrowUpRight size={13} />
         </a>
         <a href="#styled">
-          LOOKBOOK <ArrowUpRight size={13} />
+          穿搭大片 <ArrowUpRight size={13} />
         </a>
         <a href="#community">
-          STREET FIT ARCHIVE <ArrowUpRight size={13} />
+          上身档案 <ArrowUpRight size={13} />
         </a>
       </nav>
       <div className="final-footer-meta">
         <a href="https://www.douyin.com/search/Pansk88888?type=user" target="_blank" rel="noreferrer">
           Douyin: Pansk88888
         </a>
-        <span>Taobao Store</span>
+        <span>淘宝店铺</span>
       </div>
-      <a className="back-to-top" href="#hero" onClick={scrollToTop} data-cursor="Top">
-        Back to Top <ArrowUpRight size={13} />
+      <a className="back-to-top" href="#hero" onClick={scrollToTop} data-cursor="顶部">
+        回到顶部 <ArrowUpRight size={13} />
       </a>
     </footer>
   );
@@ -704,8 +686,6 @@ export default function Home() {
   const [selectedColor, setSelectedColor] = useState("");
   const [selectedSize, setSelectedSize] = useState("M");
   const cursorRef = useRef(null);
-
-  const activeHero = heroSlides[heroIndex];
 
   useEffect(() => {
     const locked = menuOpen || quickViewProduct || selectedLook;
@@ -904,7 +884,7 @@ export default function Home() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     gsap.fromTo(
-      ".hero-copy .split-line > span, .hero-copy button",
+      ".hero-copy a, .hero-copy button",
       { y: 34, opacity: 0, filter: "blur(8px)" },
       { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.75, ease: "power4.out", stagger: 0.06 }
     );
@@ -938,7 +918,7 @@ export default function Home() {
 
   const openQuickView = (product) => {
     if (product.slot && product.id === "video-loop") return;
-    setSelectedColor(product.colors?.[0] || "Black");
+    setSelectedColor(product.colors?.[0] || "黑色");
     setSelectedSize("M");
     setQuickViewProduct(product);
   };
@@ -952,14 +932,14 @@ export default function Home() {
       <div className="page-wipe" aria-hidden="true" />
 
       <header className={`site-header pointer-events-none fixed left-0 right-0 top-0 z-[120] grid grid-cols-[1fr_auto_1fr] items-start px-6 py-5 text-ink ${headerScrolled ? "is-scrolled" : ""}`}>
-        <button className="pointer-events-auto text-left text-[42px] font-black leading-[0.85]" type="button" onClick={() => navigateWithWipe("/")} aria-label="PANSK home">
+        <button className="pointer-events-auto text-left text-[42px] font-black leading-[0.85]" type="button" onClick={() => navigateWithWipe("/")} aria-label="PANSK 首页">
           PANSK
         </button>
         <button
           className="pointer-events-auto relative mt-1 h-6 w-28"
           type="button"
-          data-cursor="Menu"
-          aria-label="Open menu"
+          data-cursor="菜单"
+          aria-label="打开菜单"
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen(true)}
         >
@@ -968,13 +948,13 @@ export default function Home() {
         </button>
         <nav className="pointer-events-auto hidden justify-end gap-7 text-sm uppercase md:flex" aria-label="Primary">
           <a className="underline-hover relative uppercase" href="#lookbook">
-            New In
+            新品
           </a>
           <a className="underline-hover relative uppercase" href="#styled">
-            Lookbook
+            穿搭
           </a>
           <button className="underline-hover relative uppercase" type="button" onClick={() => navigateWithWipe("/shop")}>
-            Products
+            商品
           </button>
         </nav>
       </header>
@@ -986,22 +966,22 @@ export default function Home() {
         aria-hidden={!menuOpen}
       >
         <div className="grid grid-cols-[1fr_auto] items-start px-6 py-6 uppercase">
-          <p className="text-sm font-black">PANSK Since 2023</p>
+          <p className="text-sm font-black">PANSK / 自 2023</p>
           <button
             className="underline-hover relative justify-self-end text-sm font-black uppercase"
             type="button"
-            data-cursor="Close"
+            data-cursor="关闭"
             onClick={() => setMenuOpen(false)}
           >
-            Close
+            关闭
           </button>
         </div>
-        <nav className="self-start justify-self-center pt-[1vh]" aria-label="Menu">
+        <nav className="self-start justify-self-center pt-[1vh]" aria-label="菜单">
           {menuLinks.map((item) => {
             const className = "menu-link block text-[clamp(58px,6.8vw,118px)] font-black uppercase leading-[0.86] transition duration-300 hover:translate-x-5 hover:text-signal";
             if (item.kind === "disabled") {
               return (
-                <button key={item.label} className={className} type="button" data-cursor="Soon">
+                <button key={item.label} className={className} type="button" data-cursor="即将">
                   {item.label}
                 </button>
               );
@@ -1028,7 +1008,7 @@ export default function Home() {
           })}
         </nav>
         <div className="grid grid-cols-3 items-end px-6 py-6 text-sm font-black uppercase leading-tight">
-          <span className="justify-self-start text-left">Brand Archive<br />Join the Fam</span>
+          <span className="justify-self-start text-left">品牌档案<br />一起出发</span>
           <span className="justify-self-center">Douyin: Pansk88888</span>
           <span className="justify-self-end">PANSK 2023</span>
         </div>
@@ -1037,7 +1017,7 @@ export default function Home() {
       <main>
         <section
           id="hero"
-          className="hero-section relative min-h-[112vh] overflow-hidden bg-[#F4F1EA] text-ink"
+          className="hero-section relative min-h-screen overflow-hidden bg-[#050505] text-bone"
         >
           {heroSlides.map((slide, index) => (
             <div
@@ -1070,7 +1050,8 @@ export default function Home() {
                 type="button"
                 className={`hero-trigger ${heroTriggerClasses[index]} ${index === heroIndex ? "is-active" : ""}`}
                 onClick={() => goToHero(index)}
-                aria-label={`Show hero slide ${slide.trigger}`}
+                aria-label={`切换首屏图片 ${slide.trigger}`}
+                aria-pressed={index === heroIndex}
                 data-cursor={slide.trigger}
               >
                 <span>{slide.trigger}</span>
@@ -1079,41 +1060,35 @@ export default function Home() {
                     className="h-full w-full object-cover"
                     src={asset(slide.image)}
                     alt=""
-                      width={180}
-                      height={240}
-                      quality={88}
-                    />
-                  </span>
-                </button>
+                    width={180}
+                    height={240}
+                    quality={82}
+                  />
+                </span>
+              </button>
             ))}
           </div>
-          <div key={activeHero.title} className="hero-copy absolute bottom-[calc(12vh+5rem)] left-6 right-6 max-w-[min(48vw,760px)]">
-            <p className="hero-meta font-serif text-[24px] font-normal italic leading-none">{activeHero.label}</p>
-            <h1 className="mt-1 font-sans text-[clamp(38px,min(4.7vw,6.4vh),72px)] font-black uppercase leading-[0.92]">
-              <TextReveal>{activeHero.title}</TextReveal>
-            </h1>
-            <p className="mt-1 max-w-[760px] text-[clamp(34px,min(4.35vw,5.8vh),66px)] font-black uppercase leading-[0.92] text-ink/55">
-              <TextReveal>{activeHero.subtitle}</TextReveal>
-            </p>
-            <div className="hero-actions mt-8 flex flex-wrap gap-3">
-              <a href="#styled">Explore Looks <ArrowUpRight size={16} /></a>
-              <button type="button" onClick={() => navigateWithWipe("/shop")}>Shop New Arrivals</button>
+          <div className="hero-copy absolute bottom-[8.5vh] left-6 right-6 max-w-[min(64vw,980px)]">
+            <div className="hero-actions">
+              <button type="button" onClick={() => navigateWithWipe("/shop")}>SHOP NOW</button>
+              <a href="https://www.douyin.com/search/Pansk88888?type=user" target="_blank" rel="noreferrer">ABOUT US</a>
             </div>
           </div>
-          <a className="scroll-indicator" href="#philosophy" aria-label="Scroll to brand intro">
+          <a className="scroll-indicator" href="#philosophy" aria-label="滚动到品牌理念">
             <span />
             Scroll
           </a>
         </section>
 
-        <section id="philosophy" className="grid min-h-screen grid-cols-[minmax(180px,26vw)_1fr] gap-[10vw] bg-[#F1EDE6] px-[5vw] py-[12vh]">
-          <div className="reveal max-w-[220px] self-start overflow-hidden">
-            <Image src={asset("pansk-logo.png")} alt="PANSK Since 2023 logo" width={1254} height={1254} />
+        <section id="philosophy" className="brand-philosophy">
+          <div className="brand-philosophy-mark reveal">
+            <Image src={asset("pansk-logo.png")} alt="PANSK 品牌标志" width={1254} height={1254} />
           </div>
-          <div className="self-start">
-            <SectionKicker>( Brand Philosophy )</SectionKicker>
-            <h2 className="reveal-line mt-7 max-w-[900px] text-[clamp(34px,3.6vw,68px)] font-medium leading-[1.04]">
-              Daily uniforms for young men: denim, utility silhouettes, relaxed fits, and clothes that move naturally through the city.
+          <div className="brand-philosophy-copy self-start">
+            <h2 className="reveal-line">
+              想到你穿这件衣服去天涯海角，<br />
+              我就很高兴，<br />
+              用最好的样子去见最好的人。
             </h2>
           </div>
         </section>
@@ -1124,17 +1099,16 @@ export default function Home() {
           <div className="mb-[8vh] grid grid-cols-3 items-start px-6">
             <p className="text-[clamp(34px,3.8vw,58px)] font-black lowercase leading-none">PANSK</p>
             <div className="justify-self-center text-center">
-              <SectionKicker>( Selected Products )</SectionKicker>
               <div className="mx-auto mt-2 h-px w-40 bg-ink" />
             </div>
             <button className="justify-self-end text-sm font-black uppercase transition hover:opacity-55" type="button" onClick={() => navigateWithWipe("/shop")}>
-              View all
+              查看全部
             </button>
           </div>
           <ProductRail products={featuredProducts} onQuickView={openQuickView} />
           <div className="mt-[10vh] text-center">
             <button className="border border-transparent px-5 py-3 text-sm font-black uppercase transition hover:border-ink" type="button" onClick={() => navigateWithWipe("/shop")}>
-              ( View all products )
+              ( 查看全部商品 )
             </button>
           </div>
         </section>
@@ -1158,7 +1132,7 @@ export default function Home() {
                 <Image
                   className="h-full w-full object-cover"
                   src={asset(quickViewProduct.back || quickViewProduct.front)}
-                  alt={`${quickViewProduct.name} preview`}
+                  alt={`${quickViewProduct.name} 预览图`}
                   fill
                   sizes="50vw"
                 />
@@ -1168,12 +1142,12 @@ export default function Home() {
               <button
                 className="absolute right-6 top-6 border border-white/25 p-2 transition hover:bg-bone hover:text-ink"
                 type="button"
-                aria-label="Close quick view"
+                aria-label="关闭快速查看"
                 onClick={() => setQuickViewProduct(null)}
               >
                 <X size={18} />
               </button>
-              <p className="text-xs uppercase tracking-[0.18em] text-bone/45">Quick View</p>
+              <p className="text-xs uppercase tracking-[0.18em] text-bone/45">快速查看</p>
               <h2 className="mt-8 max-w-[520px] text-[clamp(42px,4.8vw,76px)] font-black uppercase leading-[0.92]">
                 {quickViewProduct.displayTitle || homeProductMeta[quickViewProduct.id]?.[0] || quickViewProduct.name}
               </h2>
@@ -1182,7 +1156,7 @@ export default function Home() {
 
               <div className="mt-10 space-y-8">
                 <div>
-                  <p className="mb-3 text-xs uppercase tracking-[0.18em] text-bone/45">Color</p>
+                  <p className="mb-3 text-xs uppercase tracking-[0.18em] text-bone/45">颜色</p>
                   <div className="flex flex-wrap gap-2">
                     {quickViewProduct.colors.map((color) => (
                       <button
@@ -1201,17 +1175,17 @@ export default function Home() {
 
                 <div className="grid grid-cols-2 gap-2 text-xs uppercase tracking-[0.14em] text-bone/55">
                   <div className="border border-white/15 p-4">
-                    <p className="text-bone/35">Material</p>
-                    <p className="mt-2 text-bone">Cotton / Denim / Utility fabric</p>
+                    <p className="text-bone/35">材质</p>
+                    <p className="mt-2 text-bone">棉 / 丹宁 / 工装面料</p>
                   </div>
                   <div className="border border-white/15 p-4">
-                    <p className="text-bone/35">Status</p>
-                    <p className="mt-2 text-bone">View details / contact to order</p>
+                    <p className="text-bone/35">状态</p>
+                    <p className="mt-2 text-bone">查看详情 / 联系下单</p>
                   </div>
                 </div>
 
                 <div>
-                  <p className="mb-3 text-xs uppercase tracking-[0.18em] text-bone/45">Size</p>
+                  <p className="mb-3 text-xs uppercase tracking-[0.18em] text-bone/45">尺码</p>
                   <div className="grid grid-cols-5 gap-2">
                     {sizes.map((size) => (
                       <button
@@ -1228,7 +1202,7 @@ export default function Home() {
                   </div>
                 </div>
                 <button className="quick-view-cta" type="button">
-                  View Details <ArrowUpRight size={16} />
+                  查看详情 <ArrowUpRight size={16} />
                 </button>
               </div>
             </div>

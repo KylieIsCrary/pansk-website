@@ -7,10 +7,10 @@ import { productGroups, shopProducts } from "../shop-data";
 const asset = (name) => `/assets/${name}`;
 
 const menuLinks = [
-  { label: "Our Shop", href: "/shop", kind: "shop" },
-  { label: "Home", href: "/", kind: "home" },
-  { label: "About Us", href: "https://www.douyin.com/search/Pansk88888?type=user", kind: "external" },
-  { label: "Contact", href: "", kind: "disabled" },
+  { label: "全部商品", href: "/shop", kind: "shop" },
+  { label: "首页", href: "/", kind: "home" },
+  { label: "关于 PANSK", href: "https://www.douyin.com/search/Pansk88888?type=user", kind: "external" },
+  { label: "联系", href: "", kind: "disabled" },
 ];
 
 const categoryFilters = productGroups.map((group) => ({
@@ -47,7 +47,7 @@ function ShopCard({ product, index }) {
             <Image
               className={`shop-product-front absolute inset-0 h-full w-full transition duration-700 ease-brand ${imageFit}`}
               src={asset(product.front)}
-              alt={`${product.name} product view`}
+              alt={`${product.name} 单品图`}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
               quality={88}
@@ -57,7 +57,7 @@ function ShopCard({ product, index }) {
               <Image
                 className={`shop-product-back absolute inset-0 h-full w-full opacity-0 transition duration-700 ease-brand ${hoverFit}`}
                 src={asset(product.back)}
-                alt={`${product.name} worn view`}
+                alt={`${product.name} 上身图`}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 quality={88}
@@ -118,14 +118,14 @@ export default function ShopPage() {
         <button
           className="relative mt-1 h-6 w-28"
           type="button"
-          aria-label="Open menu"
+          aria-label="打开菜单"
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen(true)}
         >
           <span className="menu-line top-[7px]" />
           <span className="menu-line bottom-[7px]" />
         </button>
-        <p className="justify-self-end text-sm font-black uppercase">Brand Archive</p>
+        <p className="justify-self-end text-sm font-black uppercase">品牌档案</p>
       </header>
 
       <div
@@ -135,12 +135,12 @@ export default function ShopPage() {
         aria-hidden={!menuOpen}
       >
         <div className="grid grid-cols-[1fr_auto] items-start px-6 py-6 uppercase">
-          <p className="text-sm font-black">PANSK Since 2023</p>
+          <p className="text-sm font-black">PANSK / 自 2023</p>
           <button className="underline-hover relative justify-self-end text-sm font-black uppercase" type="button" onClick={() => setMenuOpen(false)}>
-            Close
+            关闭
           </button>
         </div>
-        <nav className="self-start justify-self-center pt-[1vh]" aria-label="Menu">
+        <nav className="self-start justify-self-center pt-[1vh]" aria-label="菜单">
           {menuLinks.map((item) => {
             const className = "menu-link block text-[clamp(58px,6.8vw,118px)] font-black uppercase leading-[0.86] transition duration-300 hover:translate-x-5 hover:text-signal";
             if (item.kind === "disabled") {
@@ -165,7 +165,7 @@ export default function ShopPage() {
           })}
         </nav>
         <div className="grid grid-cols-3 items-end px-6 py-6 text-sm font-black uppercase leading-tight">
-          <span className="justify-self-start text-left">Brand Archive<br />Join the Fam</span>
+          <span className="justify-self-start text-left">品牌档案<br />一起出发</span>
           <span className="justify-self-center">Douyin: Pansk88888</span>
           <span className="justify-self-end">PANSK 2023</span>
         </div>
@@ -173,25 +173,25 @@ export default function ShopPage() {
 
       <section className="px-6 pb-[8vh] pt-[15vh]">
         <div className="mb-[8vh] grid grid-cols-[1fr_auto_1fr] items-start">
-          <p className="text-sm font-black uppercase">PANSK / Since 2023</p>
+          <p className="text-sm font-black uppercase">PANSK / 自 2023</p>
           <div className="text-center">
-            <p className="font-serif text-[28px] italic leading-none">( All Products )</p>
+            <p className="font-serif text-[28px] italic leading-none">( 全部商品 )</p>
             <div className="mx-auto mt-2 h-px w-44 bg-ink" />
           </div>
-          <p className="justify-self-end text-sm font-black uppercase">{visibleProducts.length} pieces</p>
+          <p className="justify-self-end text-sm font-black uppercase">{visibleProducts.length} 件单品</p>
         </div>
         <div className="mb-[6vh] grid grid-cols-[1fr_auto] items-end gap-8">
-          <h1 className="text-[clamp(78px,10vw,170px)] font-black uppercase leading-[0.84]">Our Shop</h1>
+          <h1 className="text-[clamp(78px,10vw,170px)] font-black uppercase leading-[0.84]">全部商品</h1>
           <p className="pb-3 text-right text-sm font-black uppercase tracking-[0.16em] text-ink/45">{activeLabel}</p>
         </div>
-        <div className="shop-category-bar mb-[7vh]" aria-label="Product categories">
+        <div className="shop-category-bar mb-[7vh]" aria-label="商品分类">
           <button
             className={`shop-category-button ${activeFilter.groupId === "all" ? "is-active" : ""}`}
             type="button"
             onClick={() => setActiveFilter({ groupId: "all", categoryId: "all" })}
           >
             <span>全部商品</span>
-            <small>All</small>
+            <small>全部</small>
           </button>
           {categoryFilters.map((group) => (
             <div key={group.id} className="shop-category-group">
