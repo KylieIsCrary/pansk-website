@@ -1,0 +1,255 @@
+.section {
+  background: #050505;
+  color: #111;
+  min-height: 100vh;
+  position: relative;
+}
+
+.stage {
+  align-items: center;
+  background: #050505;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.header {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  left: 10px;
+  pointer-events: none;
+  position: absolute;
+  right: 10px;
+  top: 12px;
+  z-index: 40;
+}
+
+.header p {
+  font-size: clamp(18px, 2.2vw, 36px);
+  font-weight: 900;
+  letter-spacing: -0.09em;
+  line-height: 0.8;
+}
+
+.header nav {
+  display: flex;
+  gap: 18px;
+}
+
+.header span {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.stack {
+  height: calc(100vh - 82px);
+  margin-top: 34px;
+  position: relative;
+  width: calc(100vw - 14px);
+}
+
+.card {
+  background: #f5f5f3;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 28px 100px rgba(0, 0, 0, 0.42);
+  display: grid;
+  grid-template-columns: 42% 58%;
+  grid-template-rows: 1fr clamp(78px, 13vh, 126px);
+  height: 100%;
+  inset: 0;
+  overflow: hidden;
+  position: absolute;
+  will-change: transform, opacity;
+}
+
+.copyPanel {
+  align-content: end;
+  background: #fff;
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  padding: clamp(20px, 2.8vw, 42px);
+}
+
+.copyPanel p {
+  font-size: clamp(10px, 0.85vw, 12px);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+  max-width: 520px;
+  text-transform: uppercase;
+}
+
+.copyPanel span {
+  color: rgba(17, 17, 17, 0.48);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.imagePanel {
+  background: #111;
+  grid-column: 2;
+  grid-row: 1 / 3;
+  overflow: hidden;
+  position: relative;
+}
+
+.image {
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.012);
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  width: 100%;
+}
+
+.card:hover .image {
+  transform: scale(1.04);
+}
+
+.titlePanel {
+  align-items: end;
+  background: #fff;
+  border-top: 1px solid rgba(17, 17, 17, 0.08);
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: 0 clamp(18px, 2.2vw, 36px) clamp(8px, 1vh, 14px);
+}
+
+.titlePanel h2 {
+  font-size: clamp(42px, 7.7vw, 142px);
+  font-weight: 900;
+  letter-spacing: -0.09em;
+  line-height: 0.76;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.titlePanel strong {
+  font-size: clamp(34px, 4.8vw, 92px);
+  font-weight: 900;
+  letter-spacing: -0.08em;
+  line-height: 0.78;
+}
+
+.cornerTag {
+  background: #f0d000;
+  bottom: 0;
+  color: #111;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  padding: 8px 20px 7px;
+  position: absolute;
+  right: -28px;
+  text-transform: uppercase;
+  transform: rotate(-45deg);
+  transform-origin: center;
+  z-index: 5;
+}
+
+@media (max-width: 760px) {
+  .section {
+    background: #050505;
+    height: auto;
+    padding: 64px 8px 72px;
+  }
+
+  .stage {
+    display: block;
+    height: auto;
+    overflow: visible;
+  }
+
+  .header {
+    margin-bottom: 18px;
+    position: static;
+  }
+
+  .stack {
+    display: grid;
+    gap: 14px;
+    height: auto;
+    margin-top: 0;
+    width: 100%;
+  }
+
+  .card {
+    aspect-ratio: 3 / 4.6;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 92px;
+    height: auto;
+    position: relative;
+    transform: none !important;
+  }
+
+  .copyPanel {
+    display: none;
+  }
+
+  .imagePanel {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .titlePanel {
+    grid-row: 2;
+  }
+
+  .titlePanel h2 {
+    font-size: clamp(34px, 11vw, 58px);
+  }
+
+  .titlePanel strong {
+    font-size: clamp(28px, 9vw, 48px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    height: auto;
+    padding: 80px 8px;
+  }
+
+  .stage {
+    display: block;
+    height: auto;
+    overflow: visible;
+  }
+
+  .header {
+    margin-bottom: 18px;
+    position: static;
+  }
+
+  .stack {
+    display: grid;
+    gap: 18px;
+    height: auto;
+    margin-top: 0;
+  }
+
+  .card {
+    aspect-ratio: 16 / 9;
+    position: relative;
+    transform: none !important;
+  }
+
+  .image {
+    transition: none;
+  }
+}

@@ -7,6 +7,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import { categorizedProducts } from "./shop-data";
+import StackedLookbook from "./components/StackedLookbook";
+import SpatialGallery from "./components/SpatialGallery";
 
 const asset = (name) => `/assets/${name}`;
 
@@ -91,103 +93,6 @@ const featuredProducts = featuredProductIds
   .filter(Boolean)
   .map(withHomeProductMeta);
 
-const streetFitArchive = [
-  ["community-fit-01.jpg", "迷彩工装 / 黑色短袖", "-34vw", "-17vh", "-10deg", "0.92"],
-  ["community-fit-02.jpg", "水洗牛仔 / 城市层次", "-19vw", "18vh", "7deg", "1"],
-  ["community-fit-03.jpg", "黑色短袖 / 宽松牛仔", "0vw", "-23vh", "-4deg", "0.96"],
-  ["community-fit-04.jpg", "工装夹克 / 松弛长裤", "23vw", "15vh", "9deg", "1.03"],
-  ["community-fit-05.jpg", "白色短袖 / 宽腿长裤", "36vw", "-16vh", "-8deg", "0.9"],
-  ["community-fit-06.jpg", "丹宁衬衫 / 日常制服", "-39vw", "14vh", "5deg", "0.88"],
-  ["community-fit-07.jpg", "原牛丹宁 / 今日出发", "-24vw", "-30vh", "11deg", "0.9"],
-  ["community-fit-08.jpg", "图案短袖 / 蓝色牛仔", "13vw", "29vh", "-7deg", "1"],
-  ["community-fit-09.jpg", "工装长裤 / 黑色叠穿", "39vw", "23vh", "6deg", "0.92"],
-  ["community-fit-10.jpg", "水洗夹克 / 工装长裤", "-5vw", "24vh", "4deg", "0.97"],
-  ["community-fit-11.jpg", "黑色丹宁 / 干净出门", "7vw", "-4vh", "-12deg", "0.86"],
-  ["community-fit-12.jpg", "宽松牛仔 / 真实上身", "30vw", "-32vh", "12deg", "0.89"],
-  ["community-fit-13.jpg", "城市漫游 / 黑色层次", "-43vw", "-2vh", "13deg", "0.82"],
-  ["community-fit-14.jpg", "日常丹宁 / 白色短袖", "-31vw", "31vh", "-13deg", "0.86"],
-  ["community-fit-15.jpg", "松弛廓形 / 街头长裤", "-16vw", "-38vh", "6deg", "0.84"],
-  ["community-fit-16.jpg", "真实上身 / 城市快照", "18vw", "-37vh", "-15deg", "0.83"],
-  ["community-fit-17.jpg", "宽松长裤 / 干净上衣", "43vw", "3vh", "14deg", "0.82"],
-  ["community-fit-18.jpg", "黑色短袖 / 日常丹宁", "31vw", "34vh", "-10deg", "0.86"],
-  ["community-fit-19.jpg", "宽腿裤型 / 社区穿搭", "-41vw", "36vh", "8deg", "0.8"],
-  ["community-fit-20.jpg", "街头制服 / 真实上身", "-8vw", "38vh", "-5deg", "0.83"],
-  ["community-fit-21.jpg", "工装情绪 / 城市穿搭", "6vw", "-40vh", "10deg", "0.82"],
-  ["community-fit-22.jpg", "丹宁流动 / 真实穿着", "42vw", "-36vh", "-6deg", "0.8"],
-  ["community-fit-23.jpg", "年轻男装 / 日常快照", "0vw", "7vh", "15deg", "0.78"],
-  ["community-fit-24.jpg", "日常制服 / PANSK", "-28vw", "0vh", "-16deg", "0.8"],
-].map(([image, item, , , rotate], index) => {
-  const cardHeights = ["420px", "500px", "380px", "460px", "540px", "430px"];
-  const safeRotate = Math.max(-8, Math.min(8, Number.parseFloat(rotate)));
-  return {
-  image: image.replace(".jpg", ".webp"),
-  item,
-  rotate: `${safeRotate}deg`,
-  height: cardHeights[index % cardHeights.length],
-  delay: `${index * 55}ms`,
-  number: `上身 ${String(index + 1).padStart(2, "0")}`,
-  };
-});
-
-const lookCards = [
-  {
-    id: "look-card-01",
-    number: "造型 01",
-    title: "去见远方",
-    subtitle: "黑色短袖 / 宽松牛仔",
-    productIds: ["pansk-punk-cat-tee-white", "indigo-14oz-whisker-jeans"],
-    image: "look-card-01.jpg",
-  },
-  {
-    id: "look-card-02",
-    number: "造型 02",
-    title: "城市里也有风",
-    subtitle: "水洗夹克 / 日常长裤",
-    productIds: ["light-blue-denim-jacket", "plain-12oz-denim-jeans"],
-    image: "look-card-02.jpg",
-  },
-  {
-    id: "look-card-03",
-    number: "造型 03",
-    title: "把旧时光穿新",
-    subtitle: "炒盐夹克 / 咖啡牛仔",
-    productIds: ["salt-wash-boxy-jacket", "coffee-wash-denim-jeans"],
-    image: "look-card-03.jpg",
-  },
-  {
-    id: "look-card-04",
-    number: "造型 04",
-    title: "向旷野出发",
-    subtitle: "朋克猫短袖 / 迷彩工装",
-    productIds: ["pansk-punk-cat-tee-white", "branch-maple-camo-cargo"],
-    image: "look-card-04.jpg",
-  },
-  {
-    id: "look-card-05",
-    number: "造型 05",
-    title: "让时间留下痕迹",
-    subtitle: "黑色原牛 / 深蓝水洗",
-    productIds: ["five-button-kanglong-raw-denim", "deep-blue-14oz-honeycomb-jeans"],
-    image: "look-card-05.jpg",
-  },
-  {
-    id: "look-card-06",
-    number: "造型 06",
-    title: "今天也要好好出门",
-    subtitle: "图案短袖 / 直筒牛仔",
-    productIds: ["pansk-punk-cat-tee-white", "plain-12oz-denim-jeans"],
-    image: "look-card-06.jpg",
-  },
-  {
-    id: "look-card-07",
-    number: "造型 07",
-    title: "松弛地去生活",
-    subtitle: "水洗丹宁 / 城市层次",
-    productIds: ["light-blue-denim-jacket", "coffee-wash-denim-jeans"],
-    image: "look-card-07.jpg",
-  },
-];
-
 function SectionKicker({ children }) {
   return <p className="font-serif text-[22px] font-normal italic leading-none text-current">{children}</p>;
 }
@@ -243,19 +148,19 @@ function ProductRail({ products, onQuickView }) {
                 />
                 <Image
                   className={`showcase-product__back absolute inset-0 h-full w-full opacity-0 transition duration-700 ease-brand ${
-                    product.hoverFit === "cover" ? "object-contain p-[clamp(8px,1vw,18px)]" : "object-contain p-[clamp(8px,1vw,18px)]"
+                    product.hoverFit === "cover" ? "object-cover p-0" : "object-contain p-[clamp(8px,1vw,18px)]"
                   }`}
                   src={asset(product.back)}
                   alt={`${product.name} 上身图`}
                   fill
                   sizes="(max-width: 900px) 86vw, 38vw"
                 />
-                <div className="showcase-product__panel absolute bottom-5 left-5 right-5 transition duration-500 ease-brand">
-                  <div className="grid grid-cols-[1fr_auto] gap-4 text-[11px] font-black uppercase leading-none tracking-[0.14em]">
+                <div className="showcase-product__panel absolute bottom-3 left-3 right-3 transition duration-500 ease-brand">
+                  <div className="showcase-product__info-row">
                     <h3>{product.displayTitle || product.name}</h3>
-                    <ArrowUpRight size={14} />
+                    <ArrowUpRight size={16} strokeWidth={1.7} />
                   </div>
-                  <p className="mt-2 text-[10px] uppercase tracking-[0.16em] text-ink/45">{product.displaySubtitle || product.note}</p>
+                  <p>{product.displaySubtitle || product.note}</p>
                 </div>
               </div>
             </article>
@@ -266,267 +171,12 @@ function ProductRail({ products, onQuickView }) {
   );
 }
 
-function LookStackSection({ onOpenLook }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [dragOffset, setDragOffset] = useState(0);
-  const dragRef = useRef({ dragging: false, startX: 0 });
-
-  const clampIndex = (index) => Math.max(0, Math.min(lookCards.length - 1, index));
-  const goToLook = (index) => setActiveIndex(clampIndex(index));
-
-  const startDrag = (event) => {
-    dragRef.current = { dragging: true, startX: event.clientX };
-    setDragOffset(0);
-    event.currentTarget.setPointerCapture?.(event.pointerId);
-  };
-
-  const moveDrag = (event) => {
-    if (!dragRef.current.dragging) return;
-    setDragOffset(event.clientX - dragRef.current.startX);
-  };
-
-  const endDrag = () => {
-    if (!dragRef.current.dragging) return;
-    const threshold = 90;
-    if (dragOffset < -threshold) goToLook(activeIndex + 1);
-    if (dragOffset > threshold) goToLook(activeIndex - 1);
-    dragRef.current.dragging = false;
-    setDragOffset(0);
-  };
-
+function ArchiveTransition({ title, subtitle }) {
   return (
-    <section id="styled" className="look-stack-section">
-        <div className="look-stack-stage reveal">
-        <div className="look-stack-topline">
-          <p>{String(activeIndex + 1).padStart(2, "0")} / {String(lookCards.length).padStart(2, "0")}</p>
-        </div>
-        <div
-          className="look-stack-deck"
-          aria-label="PANSK 精选穿搭卡片"
-          onPointerDown={startDrag}
-          onPointerMove={moveDrag}
-          onPointerUp={endDrag}
-          onPointerCancel={endDrag}
-        >
-          {lookCards.map((look, lookIndex) => {
-            const offset = lookIndex - activeIndex;
-            const isActive = offset === 0;
-            const translate = `calc(${offset} * min(23vw, 300px) + ${isActive ? dragOffset * 0.28 : dragOffset * 0.1}px)`;
-            const scale = Math.max(0.84, 1 - Math.abs(offset) * 0.08);
-            const opacity = Math.max(0.45, 1 - Math.abs(offset) * 0.2);
-            const rotate = offset * 3.5;
-            const zIndex = 20 - Math.abs(offset);
-
-            return (
-              <article
-                key={look.id}
-                className={`look-stack-card ${isActive ? "is-active" : ""}`}
-                data-look-index={lookIndex}
-                style={{
-                  "--look-x": translate,
-                  "--look-scale": scale,
-                  "--look-opacity": opacity,
-                  "--look-rotate": `${rotate}deg`,
-                  zIndex,
-                }}
-                onClick={() => {
-                  if (!isActive) {
-                    goToLook(lookIndex);
-                    return;
-                  }
-                  onOpenLook(look);
-                }}
-              >
-                <div className="look-stack-card-lift" data-cursor={isActive ? "查看" : "聚焦"}>
-                  <div className="look-card-media">
-                    <Image
-                      className="look-card-frame is-active"
-                      src={asset(look.image)}
-                      alt={`${look.title} 穿搭`}
-                      fill
-                      sizes="32vw"
-                      quality={88}
-                      draggable={false}
-                    />
-                  </div>
-                </div>
-              </article>
-            );
-          })}
-        </div>
-        <div className="look-stack-controls">
-          <button type="button" aria-label="上一套穿搭" onClick={() => goToLook(activeIndex - 1)}>
-            上一套
-          </button>
-          <div className="look-stack-progress">
-            <span style={{ transform: `scaleX(${(activeIndex + 1) / lookCards.length})` }} />
-          </div>
-          <button type="button" aria-label="下一套穿搭" onClick={() => goToLook(activeIndex + 1)}>
-            下一套
-          </button>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ShopLookDrawer({ look, onClose, onQuickView }) {
-  if (!look) return null;
-  const products = look.productIds.map((id) => categorizedProductById.get(id)).filter(Boolean);
-
-  return (
-    <div className="shop-look-overlay" onClick={onClose}>
-      <aside className="shop-look-drawer" onClick={(event) => event.stopPropagation()}>
-        <button className="shop-look-close" type="button" onClick={onClose} aria-label="关闭穿搭详情">
-          <X size={18} />
-        </button>
-        <div className="shop-look-image">
-          <Image src={asset(look.image)} alt={`${look.title} 造型`} fill sizes="44vw" quality={88} />
-        </div>
-        <div className="shop-look-content">
-          <p className="text-xs uppercase tracking-[0.18em] text-bone/45">穿这一套</p>
-          <h2>{look.title}</h2>
-          <p>{look.subtitle}</p>
-          <div className="shop-look-products">
-            {products.map((product) => (
-              <article key={product.id} className="shop-look-product">
-                <div>
-                  <Image src={asset(product.front)} alt={product.name} width={82} height={102} />
-                </div>
-                <section>
-                  <p>{homeProductMeta[product.id]?.[1] || product.note}</p>
-                  <h3>{homeProductMeta[product.id]?.[0] || product.name}</h3>
-                  <button type="button" onClick={() => onQuickView(product)}>
-                    查看单品 <ArrowUpRight size={13} />
-                  </button>
-                </section>
-              </article>
-            ))}
-          </div>
-        </div>
-      </aside>
-    </div>
-  );
-}
-
-function StreetFitArchiveSection() {
-  const sectionRef = useRef(null);
-  const rafRef = useRef(0);
-  const pointerRef = useRef({ x: 0, y: 0 });
-  const [sectionVisible, setSectionVisible] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(10);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return undefined;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setSectionVisible(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "320px 0px" }
-    );
-    observer.observe(section);
-    return () => {
-      observer.disconnect();
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!sectionVisible || visibleCount >= streetFitArchive.length) return undefined;
-    const timer = window.setTimeout(() => {
-      setVisibleCount((count) => Math.min(count + 6, streetFitArchive.length));
-    }, 420);
-    return () => window.clearTimeout(timer);
-  }, [sectionVisible, visibleCount]);
-
-  const handlePointerMove = (event) => {
-    const section = sectionRef.current;
-    if (!section) return;
-    const rect = section.getBoundingClientRect();
-    pointerRef.current = {
-      x: ((event.clientX - rect.left) / rect.width - 0.5) * 2,
-      y: ((event.clientY - rect.top) / rect.height - 0.5) * 2,
-    };
-    const revealX = event.clientX - rect.left;
-    const revealY = event.clientY - rect.top;
-    if (rafRef.current) return;
-    rafRef.current = requestAnimationFrame(() => {
-      section.style.setProperty("--parallax-x", `${pointerRef.current.x * 16}px`);
-      section.style.setProperty("--parallax-y", `${pointerRef.current.y * 12}px`);
-      section.style.setProperty("--community-x", `${revealX}px`);
-      section.style.setProperty("--community-y", `${revealY}px`);
-      section.style.setProperty("--community-alpha", "1");
-      rafRef.current = 0;
-    });
-  };
-
-  const handlePointerLeave = () => {
-    sectionRef.current?.style.setProperty("--community-alpha", "0");
-  };
-
-  const visibleFits = streetFitArchive.slice(0, visibleCount);
-
-  return (
-    <section
-      id="community"
-      ref={sectionRef}
-      className="street-fit-section reveal"
-      onPointerMove={handlePointerMove}
-      onPointerLeave={handlePointerLeave}
-    >
-      <div className="community-letter-field" aria-hidden="true">
-        <span>PANSK</span>
-        <span>PANSK</span>
-        <span>PANSK</span>
-        <span>PANSK</span>
-        <span>PANSK</span>
-      </div>
-      <div className="street-fit-heading">
-        <div className="street-fit-heading-copy">
-          <p>感恩每一次上身，让衣服有了意义与温度</p>
-          <span>真实上身 / 去生活里见最好的人</span>
-        </div>
-      </div>
-      <div className="street-fit-wall" aria-label="PANSK 真实上身档案">
-        {visibleFits.map((fit, index) => (
-          <article
-            key={fit.image}
-            className="street-fit-card"
-            style={{
-              "--rotate": fit.rotate,
-              "--card-height": fit.height,
-              "--delay": fit.delay,
-              "--z": index + 1,
-            }}
-          >
-            <Image
-              src={asset(fit.image)}
-              alt={`${fit.number} ${fit.item}`}
-              fill
-              sizes="(max-width: 900px) 46vw, 22vw"
-              quality={75}
-              loading="lazy"
-              decoding="async"
-              draggable={false}
-            />
-            <div className="street-fit-overlay">
-              <p>{fit.number}</p>
-              <span>{fit.item}</span>
-            </div>
-          </article>
-        ))}
-        {visibleCount < streetFitArchive.length ? (
-          <div className="street-fit-loading" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-          </div>
-        ) : null}
-      </div>
+    <section className="archive-transition" aria-label={title}>
+      <div />
+      <p>{title}</p>
+      <span>{subtitle}</span>
     </section>
   );
 }
@@ -681,24 +331,23 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [heroIndex, setHeroIndex] = useState(0);
   const [quickViewProduct, setQuickViewProduct] = useState(null);
-  const [selectedLook, setSelectedLook] = useState(null);
   const [headerScrolled, setHeaderScrolled] = useState(false);
+  const [headerHidden, setHeaderHidden] = useState(false);
   const [selectedColor, setSelectedColor] = useState("");
   const [selectedSize, setSelectedSize] = useState("M");
   const cursorRef = useRef(null);
 
   useEffect(() => {
-    const locked = menuOpen || quickViewProduct || selectedLook;
+    const locked = menuOpen || quickViewProduct;
     document.body.classList.toggle("menu-open", locked);
     return () => document.body.classList.remove("menu-open");
-  }, [menuOpen, quickViewProduct, selectedLook]);
+  }, [menuOpen, quickViewProduct]);
 
   useEffect(() => {
     const closeOnEsc = (event) => {
       if (event.key !== "Escape") return;
       setMenuOpen(false);
       setQuickViewProduct(null);
-      setSelectedLook(null);
     };
     window.addEventListener("keydown", closeOnEsc);
     return () => window.removeEventListener("keydown", closeOnEsc);
@@ -709,6 +358,21 @@ export default function Home() {
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const community = document.querySelector("#community");
+    if (!community) return undefined;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setHeaderHidden(entry.isIntersecting && entry.intersectionRatio > 0.18);
+      },
+      { threshold: [0, 0.18, 0.42], rootMargin: "-8% 0px -12% 0px" }
+    );
+
+    observer.observe(community);
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -863,7 +527,6 @@ export default function Home() {
       cleanupFns.forEach((cleanup) => cleanup());
       ctx.revert();
       lenis.destroy();
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
@@ -931,7 +594,11 @@ export default function Home() {
       <div ref={cursorRef} className="cursor" aria-hidden="true" />
       <div className="page-wipe" aria-hidden="true" />
 
-      <header className={`site-header pointer-events-none fixed left-0 right-0 top-0 z-[120] grid grid-cols-[1fr_auto_1fr] items-start px-6 py-5 text-ink ${headerScrolled ? "is-scrolled" : ""}`}>
+      <header
+        className={`site-header pointer-events-none fixed left-0 right-0 top-0 z-[120] grid grid-cols-[1fr_auto_1fr] items-start px-6 py-5 text-ink ${
+          headerScrolled ? "is-scrolled" : ""
+        } ${headerHidden ? "is-hidden" : ""}`}
+      >
         <button className="pointer-events-auto text-left text-[42px] font-black leading-[0.85]" type="button" onClick={() => navigateWithWipe("/")} aria-label="PANSK 首页">
           PANSK
         </button>
@@ -1093,11 +760,9 @@ export default function Home() {
           </div>
         </section>
 
-        <LookStackSection onOpenLook={setSelectedLook} />
-
-        <section id="lookbook" className="products-showcase overflow-hidden bg-[#F8F8F6] py-[9vh] text-ink">
+        <section id="lookbook" className="products-showcase overflow-hidden bg-white py-[9vh] text-ink">
           <div className="mb-[8vh] grid grid-cols-3 items-start px-6">
-            <p className="text-[clamp(34px,3.8vw,58px)] font-black lowercase leading-none">PANSK</p>
+            <span aria-hidden="true" />
             <div className="justify-self-center text-center">
               <div className="mx-auto mt-2 h-px w-40 bg-ink" />
             </div>
@@ -1113,19 +778,26 @@ export default function Home() {
           </div>
         </section>
 
-        <StreetFitArchiveSection />
+        <ArchiveTransition title="从单品，到完整穿搭" subtitle="FROM PRODUCT TO STYLING" />
+
+        <StackedLookbook />
+
+        <ArchiveTransition title="衣服最终要走进真实生活" subtitle="FROM OFFICIAL LOOKS TO REAL FITS" />
+
+        <SpatialGallery />
+
+        <ArchiveTransition title="感恩您的上身，赋予它意义与温度" subtitle="THANK YOU FOR WEARING PANSK" />
+
         <FinalBrandTraceFooter />
       </main>
-
-      <ShopLookDrawer look={selectedLook} onClose={() => setSelectedLook(null)} onQuickView={openQuickView} />
 
       {quickViewProduct && (
         <div className="fixed inset-0 z-[700] flex items-center justify-center bg-black/70 px-5 py-8 backdrop-blur-md" onClick={() => setQuickViewProduct(null)}>
           <div
-            className="modal-panel grid max-h-[88vh] w-full max-w-[1120px] grid-cols-[1.05fr_0.95fr] overflow-auto border border-white/20 bg-[#0B0B0B] text-bone shadow-2xl"
+            className="modal-panel grid max-h-[88vh] w-full max-w-[1120px] grid-cols-[1.05fr_0.95fr] overflow-auto border border-black/10 bg-white text-ink shadow-2xl"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="relative min-h-[620px] bg-[#F1EDE6]">
+            <div className="relative min-h-[620px] bg-white">
               {quickViewProduct.slot ? (
                 <Placeholder label={quickViewProduct.slot} dark={quickViewProduct.dark} className="h-full w-full border-0" />
               ) : (
@@ -1140,29 +812,29 @@ export default function Home() {
             </div>
             <div className="relative p-8">
               <button
-                className="absolute right-6 top-6 border border-white/25 p-2 transition hover:bg-bone hover:text-ink"
+                className="absolute right-6 top-6 border border-black/20 p-2 transition hover:bg-ink hover:text-bone"
                 type="button"
                 aria-label="关闭快速查看"
                 onClick={() => setQuickViewProduct(null)}
               >
                 <X size={18} />
               </button>
-              <p className="text-xs uppercase tracking-[0.18em] text-bone/45">快速查看</p>
+              <p className="text-xs uppercase tracking-[0.18em] text-ink/45">快速查看</p>
               <h2 className="mt-8 max-w-[520px] text-[clamp(42px,4.8vw,76px)] font-black uppercase leading-[0.92]">
                 {quickViewProduct.displayTitle || homeProductMeta[quickViewProduct.id]?.[0] || quickViewProduct.name}
               </h2>
-              <p className="mt-4 text-xs uppercase tracking-[0.16em] text-bone/45">{quickViewProduct.displaySubtitle || homeProductMeta[quickViewProduct.id]?.[1] || quickViewProduct.note}</p>
-              <p className="mt-8 max-w-[560px] text-sm uppercase leading-relaxed text-bone/65">{quickViewProduct.description}</p>
+              <p className="mt-4 text-xs uppercase tracking-[0.16em] text-ink/45">{quickViewProduct.displaySubtitle || homeProductMeta[quickViewProduct.id]?.[1] || quickViewProduct.note}</p>
+              <p className="mt-8 max-w-[560px] text-sm uppercase leading-relaxed text-ink/65">{quickViewProduct.description}</p>
 
               <div className="mt-10 space-y-8">
                 <div>
-                  <p className="mb-3 text-xs uppercase tracking-[0.18em] text-bone/45">颜色</p>
+                  <p className="mb-3 text-xs uppercase tracking-[0.18em] text-ink/45">颜色</p>
                   <div className="flex flex-wrap gap-2">
                     {quickViewProduct.colors.map((color) => (
                       <button
                         key={color}
                         className={`border px-4 py-3 text-xs uppercase tracking-[0.14em] transition ${
-                          selectedColor === color ? "border-bone bg-bone text-ink" : "border-white/25 text-bone/70 hover:border-bone"
+                          selectedColor === color ? "border-ink bg-ink text-bone" : "border-black/20 text-ink/70 hover:border-ink"
                         }`}
                         type="button"
                         onClick={() => setSelectedColor(color)}
@@ -1173,25 +845,25 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2 text-xs uppercase tracking-[0.14em] text-bone/55">
-                  <div className="border border-white/15 p-4">
-                    <p className="text-bone/35">材质</p>
-                    <p className="mt-2 text-bone">棉 / 丹宁 / 工装面料</p>
+                <div className="grid grid-cols-2 gap-2 text-xs uppercase tracking-[0.14em] text-ink/55">
+                  <div className="border border-black/10 p-4">
+                    <p className="text-ink/35">材质</p>
+                    <p className="mt-2 text-ink">棉 / 丹宁 / 工装面料</p>
                   </div>
-                  <div className="border border-white/15 p-4">
-                    <p className="text-bone/35">状态</p>
-                    <p className="mt-2 text-bone">查看详情 / 联系下单</p>
+                  <div className="border border-black/10 p-4">
+                    <p className="text-ink/35">状态</p>
+                    <p className="mt-2 text-ink">查看详情 / 联系下单</p>
                   </div>
                 </div>
 
                 <div>
-                  <p className="mb-3 text-xs uppercase tracking-[0.18em] text-bone/45">尺码</p>
+                  <p className="mb-3 text-xs uppercase tracking-[0.18em] text-ink/45">尺码</p>
                   <div className="grid grid-cols-5 gap-2">
                     {sizes.map((size) => (
                       <button
                         key={size}
                         className={`border py-3 text-xs uppercase transition ${
-                          selectedSize === size ? "border-bone bg-bone text-ink" : "border-white/25 text-bone/70 hover:border-bone"
+                          selectedSize === size ? "border-ink bg-ink text-bone" : "border-black/20 text-ink/70 hover:border-ink"
                         }`}
                         type="button"
                         onClick={() => setSelectedSize(size)}

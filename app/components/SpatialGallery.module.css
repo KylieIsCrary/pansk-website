@@ -1,0 +1,330 @@
+.section {
+  --cursor-x: 50%;
+  --cursor-y: 50%;
+  background: #fff;
+  color: #111;
+  cursor: grab;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  touch-action: none;
+  user-select: none;
+}
+
+.section::before {
+  background:
+    linear-gradient(rgba(17, 17, 17, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 17, 17, 0.014) 1px, transparent 1px);
+  background-size: 132px 132px;
+  content: "";
+  inset: 0;
+  opacity: 0.18;
+  pointer-events: none;
+  position: absolute;
+}
+
+.section::after {
+  background: radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(17, 17, 17, 0.045), transparent 28vw);
+  content: "";
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 260ms ease;
+}
+
+.section.isHovering::after {
+  opacity: 1;
+}
+
+.section.isDragging {
+  cursor: grabbing;
+}
+
+.header {
+  left: clamp(18px, 2.4vw, 34px);
+  pointer-events: none;
+  position: absolute;
+  top: clamp(18px, 2.6vw, 34px);
+  z-index: 12;
+}
+
+.header h2 {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+}
+
+.header span {
+  color: rgba(17, 17, 17, 0.58);
+  display: block;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.canvas {
+  --canvas-x: 0px;
+  --canvas-y: 0px;
+  contain: layout paint style;
+  height: var(--canvas-height);
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate3d(calc(-50% + var(--canvas-x)), calc(-50% + var(--canvas-y)), 0);
+  width: var(--canvas-width);
+  will-change: transform;
+  z-index: 2;
+}
+
+.node {
+  backface-visibility: hidden;
+  left: calc(var(--x) + var(--tile-x));
+  position: absolute;
+  top: calc(var(--y) + var(--tile-y));
+  transform:
+    translate3d(var(--float-x, 0px), var(--float-y, 0px), 0)
+    rotate(var(--rotate))
+    scale(var(--depth-scale));
+  transform-origin: center;
+  transition:
+    filter 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.item {
+  background: #f4f4f2;
+  border: 0;
+  color: inherit;
+  contain: layout paint style;
+  cursor: pointer;
+  height: var(--h);
+  opacity: var(--depth-opacity);
+  overflow: hidden;
+  padding: 0;
+  text-align: left;
+  width: var(--w);
+  z-index: 3;
+}
+
+.item img {
+  filter: brightness(0.98) saturate(0.96);
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  transition:
+    filter 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 760ms cubic-bezier(0.22, 1, 0.36, 1);
+  width: 100%;
+}
+
+.caption {
+  background: rgba(255, 255, 255, 0.9);
+  bottom: 10px;
+  display: grid;
+  gap: 5px;
+  left: 10px;
+  opacity: 0;
+  padding: 9px 10px 8px;
+  pointer-events: none;
+  position: absolute;
+  transform: translateY(7px);
+  transition:
+    opacity 320ms ease,
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.caption strong,
+.caption small,
+.textNode,
+.linkNode {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.caption small {
+  color: rgba(17, 17, 17, 0.48);
+  display: block;
+  font-size: 9px;
+  margin-top: 1px;
+}
+
+.textNode {
+  border-top: 1px solid rgba(17, 17, 17, 0.18);
+  color: rgba(17, 17, 17, 0.46);
+  display: grid;
+  gap: 7px;
+  max-width: 230px;
+  padding-top: 10px;
+  z-index: 1;
+}
+
+.textNode p,
+.textNode span {
+  margin: 0;
+}
+
+.textNode span {
+  color: rgba(17, 17, 17, 0.28);
+  font-size: 9px;
+}
+
+.linkNode {
+  border-bottom: 1px solid rgba(17, 17, 17, 0.22);
+  color: rgba(17, 17, 17, 0.52);
+  padding-bottom: 7px;
+  text-decoration: none;
+  z-index: 4;
+}
+
+.section:has(.item:hover):not(.isDragging) .node {
+  filter: blur(9px) saturate(0.7) contrast(0.92);
+  opacity: 0.18;
+}
+
+.section:has(.item:hover):not(.isDragging) .item:hover {
+  filter: none;
+  opacity: 1;
+}
+
+.section.isDragging:has(.item:hover) .node {
+  filter: none;
+}
+
+.item:hover {
+  opacity: 1;
+  transform:
+    translate3d(var(--float-x, 0px), var(--float-y, 0px), 0)
+    rotate(var(--rotate))
+    scale(calc(var(--depth-scale) * 1.035));
+  z-index: 8;
+}
+
+.section.isDragging .item:hover {
+  transform:
+    translate3d(var(--float-x, 0px), var(--float-y, 0px), 0)
+    rotate(var(--rotate))
+    scale(var(--depth-scale));
+}
+
+.item:hover img {
+  filter: brightness(1.035) saturate(1);
+  transform: scale(1.025);
+}
+
+.item:hover .caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cursor {
+  color: rgba(17, 17, 17, 0.48);
+  font-size: 9px;
+  font-weight: 900;
+  left: var(--cursor-x);
+  letter-spacing: 0.16em;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  text-transform: uppercase;
+  top: var(--cursor-y);
+  transform: translate(12px, 12px);
+  transition: opacity 180ms ease;
+  z-index: 14;
+}
+
+.section.isHovering .cursor {
+  opacity: 1;
+}
+
+.section.isDragging .cursor {
+  opacity: 0.32;
+}
+
+@media (max-width: 760px) {
+  .section {
+    cursor: auto;
+    height: auto;
+    min-height: 100vh;
+    overflow: hidden;
+    padding: 72px 18px 88px;
+    touch-action: pan-x;
+  }
+
+  .section::before,
+  .section::after {
+    display: none;
+  }
+
+  .header {
+    margin-bottom: 32px;
+    position: static;
+  }
+
+  .canvas {
+    display: flex;
+    gap: 14px;
+    height: auto;
+    left: auto;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    position: relative;
+    scroll-snap-type: x mandatory;
+    top: auto;
+    transform: none !important;
+    width: 100%;
+  }
+
+  .node {
+    left: auto;
+    position: relative;
+    top: auto;
+    transform: none !important;
+  }
+
+  .cloneNode {
+    display: none;
+  }
+
+  .item {
+    aspect-ratio: 3 / 4.2;
+    flex: 0 0 76vw;
+    height: auto;
+    opacity: 1;
+    scroll-snap-align: center;
+    width: 76vw;
+  }
+
+  .textNode,
+  .linkNode {
+    display: none;
+  }
+
+  .caption {
+    opacity: 1;
+    transform: none;
+  }
+
+  .cursor {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .canvas {
+    transform: translate3d(-50%, -50%, 0) !important;
+  }
+
+  .item,
+  .item img,
+  .caption {
+    transition: none;
+  }
+}

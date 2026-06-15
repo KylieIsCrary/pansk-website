@@ -10,3 +10,5 @@ dist
 .DS_Store
 .vscode
 *.log
+.codex-video-frames/
+codex-analysis-video.mp4

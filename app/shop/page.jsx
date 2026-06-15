@@ -28,7 +28,7 @@ const categoryFilters = productGroups.map((group) => ({
 
 function ReservedSlot({ label }) {
   return (
-    <div className="shop-reserved-slot flex h-full min-h-[420px] items-center justify-center border border-black/10 bg-[#E8E4DC] text-xs font-black uppercase text-ink/45">
+    <div className="shop-reserved-slot flex h-full min-h-[420px] items-center justify-center border border-black/10 bg-white text-xs font-black uppercase text-ink/45">
       {label}
     </div>
   );
@@ -41,7 +41,7 @@ function ShopCard({ product, index }) {
 
   return (
     <article id={product.id} className="shop-product-card group" style={{ "--stagger": `${Math.min(index, 11) * 45}ms` }}>
-      <div className="relative aspect-[4/5] overflow-hidden bg-[#F3F1ED]">
+      <div className="relative aspect-[4/5] overflow-hidden bg-white">
         {hasImage ? (
           <>
             <Image
@@ -109,7 +109,7 @@ export default function ShopPage() {
   const activeLabel = activeCategory?.label || activeGroup?.label || "全部商品";
 
   return (
-    <main className="shop-page-enter min-h-screen bg-[#F8F8F6] text-ink">
+    <main className="shop-page-enter min-h-screen bg-white text-ink">
       <div className="page-wipe" aria-hidden="true" />
       <header className="fixed left-0 right-0 top-0 z-[120] grid grid-cols-[1fr_auto_1fr] items-start px-6 py-5 text-ink">
         <button className="justify-self-start text-left text-[42px] font-black uppercase leading-[0.85]" type="button" onClick={() => navigateWithWipe("/")}>
