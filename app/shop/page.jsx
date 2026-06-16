@@ -7,8 +7,9 @@ import { productGroups, shopProducts } from "../shop-data";
 const asset = (name) => `/assets/${name}`;
 
 const menuLinks = [
-  { label: "全部商品", href: "/shop", kind: "shop" },
   { label: "首页", href: "/", kind: "home" },
+  { label: "新品", href: "/#lookbook", kind: "home" },
+  { label: "穿搭", href: "/#styled", kind: "home" },
   { label: "关于 PANSK", href: "https://www.douyin.com/search/Pansk88888?type=user", kind: "external" },
   { label: "联系", href: "", kind: "disabled" },
 ];
@@ -106,7 +107,6 @@ export default function ShopPage() {
   const activeGroup = categoryFilters.find((group) => group.id === activeFilter.groupId);
   const activeCategory = activeGroup?.categories.find((category) => category.id === activeFilter.categoryId);
   const visibleProducts = activeCategory?.products || activeGroup?.products || shopProducts;
-  const activeLabel = activeCategory?.label || activeGroup?.label || "全部商品";
 
   return (
     <main className="shop-page-enter min-h-screen bg-white text-ink">
@@ -125,7 +125,7 @@ export default function ShopPage() {
           <span className="menu-line top-[7px]" />
           <span className="menu-line bottom-[7px]" />
         </button>
-        <p className="justify-self-end text-sm font-black uppercase">品牌档案</p>
+        <span aria-hidden="true" />
       </header>
 
       <div
@@ -142,7 +142,7 @@ export default function ShopPage() {
         </div>
         <nav className="self-start justify-self-center pt-[1vh]" aria-label="菜单">
           {menuLinks.map((item) => {
-            const className = "menu-link block text-[clamp(58px,6.8vw,118px)] font-black uppercase leading-[0.86] transition duration-300 hover:translate-x-5 hover:text-signal";
+            const className = "menu-link block py-1 text-[clamp(52px,6vw,104px)] font-black uppercase leading-[0.98] transition duration-300 hover:translate-x-5 hover:text-signal";
             if (item.kind === "disabled") {
               return (
                 <button key={item.label} className={className} type="button">
@@ -173,16 +173,11 @@ export default function ShopPage() {
 
       <section className="px-6 pb-[8vh] pt-[15vh]">
         <div className="mb-[8vh] grid grid-cols-[1fr_auto_1fr] items-start">
-          <p className="text-sm font-black uppercase">PANSK / 自 2023</p>
+          <span aria-hidden="true" />
           <div className="text-center">
-            <p className="font-serif text-[28px] italic leading-none">( 全部商品 )</p>
             <div className="mx-auto mt-2 h-px w-44 bg-ink" />
           </div>
-          <p className="justify-self-end text-sm font-black uppercase">{visibleProducts.length} 件单品</p>
-        </div>
-        <div className="mb-[6vh] grid grid-cols-[1fr_auto] items-end gap-8">
-          <h1 className="text-[clamp(78px,10vw,170px)] font-black uppercase leading-[0.84]">全部商品</h1>
-          <p className="pb-3 text-right text-sm font-black uppercase tracking-[0.16em] text-ink/45">{activeLabel}</p>
+          <span aria-hidden="true" />
         </div>
         <div className="shop-category-bar mb-[7vh]" aria-label="商品分类">
           <button
