@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./LookbookPinnedSection.module.css";
@@ -14,48 +13,48 @@ const INTRO_TITLE = "\u4ece\u5355\u54c1\uff0c\u5230\u5b8c\u6574\u7a7f\u642d";
 const looks = [
   {
     type: "look",
-    image: "look-card-01.jpg",
-    position: "58% center",
-    title: "CITY UNIFORM",
+    image: "lookbook-04-sea-closeup.webp",
+    position: "center center",
+    title: "OUTFIT 01",
     index: "001",
-    label: "DENIM / UTILITY / DAILY",
-    copy: "DENIM, UTILITY SHAPES AND DAILY MOVEMENT FOR THE CITY.",
+    label: "SEA / CLOSE-UP / ACCESSORY",
+    copy: "A CLOSER RECORD OF THE DETAILS THAT MOVE WITH THE BODY.",
   },
   {
     type: "look",
-    image: "look-card-02.jpg",
-    position: "60% center",
-    title: "YOUNG DAILY",
+    image: "lookbook-03-forest-road.webp",
+    position: "center center",
+    title: "OUTFIT 02",
     index: "002",
-    label: "RELAXED / STREET / LIGHT",
-    copy: "RELAXED ATTITUDE FOR DAYLIGHT, EVENING AND EVERYWHERE BETWEEN.",
+    label: "FOREST / ROAD / BLACK TEE",
+    copy: "REAL FITS LEAVE THE CITY AND KEEP THEIR SHAPE OUTSIDE IT.",
   },
   {
     type: "look",
-    image: "look-card-03.jpg",
-    position: "58% center",
-    title: "ROAD DENIM",
+    image: "lookbook-02-bridge-fit.webp",
+    position: "center center",
+    title: "OUTFIT 03",
     index: "003",
-    label: "WASHED / LOOSE / CITY",
-    copy: "WASHED DENIM, LOOSE PROPORTIONS AND A NATURAL STREET RHYTHM.",
+    label: "BRIDGE / MESH / CITY",
+    copy: "A LIGHTWEIGHT STREET UNIFORM HELD AGAINST STEEL AND SUN.",
   },
   {
     type: "look",
-    image: "look-card-04.jpg",
-    position: "62% center",
-    title: "FIELD STREET",
+    image: "lookbook-01-city-street.webp",
+    position: "center center",
+    title: "OUTFIT 04",
     index: "004",
-    label: "OUTDOOR / CARGO / REAL FIT",
-    copy: "OUTDOOR UTILITY MEETS REAL-LIFE STREETWEAR CONDITIONS.",
+    label: "CITY / STREET / WHITE TEE",
+    copy: "OFFICIAL PIECES ENTER THE STREET AND BECOME DAILY MEMORY.",
   },
   {
     type: "look",
-    image: "look-card-05.jpg",
-    position: "58% center",
-    title: "BLACK INDIGO",
+    image: "lookbook-05-lake-walk.webp",
+    position: "center center",
+    title: "OUTFIT 05",
     index: "005",
-    label: "DARK / INDIGO / UNIFORM",
-    copy: "DARK INDIGO LAYERS WITH A CLEAN, DIRECT DAILY UNIFORM FEEL.",
+    label: "LAKE / WALK / QUIET DAILY",
+    copy: "THE CLOTHES MOVE INTO OPEN AIR, WATER, GRASS AND REAL LIFE.",
   },
 ];
 
@@ -168,15 +167,12 @@ export default function LookbookPinnedSection() {
                 </div>
 
                 <div className={styles.rightPanel}>
-                  <Image
+                  {/* eslint-disable-next-line @next/next/no-img-element -- Local lookbook WebP files render more reliably here without the optimizer layer. */}
+                  <img
                     className={styles.image}
                     style={{ objectPosition: slide.position }}
                     src={asset(slide.image)}
                     alt={`${slide.title} official look`}
-                    fill
-                    sizes="52vw"
-                    quality={88}
-                    priority={index === 1}
                   />
                 </div>
               </>

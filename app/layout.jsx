@@ -27,7 +27,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="zh-CN">
+    <html lang="zh-CN" suppressHydrationWarning>
       <body className={`${anton.variable} ${inter.variable} ${instrumentSerif.variable}`}>
         {children}
       </body>

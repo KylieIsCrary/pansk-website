@@ -297,28 +297,39 @@ function FinalBrandTraceFooter() {
       </div>
       <div className="final-brand-poster">
         <h2>PANSK</h2>
-        <p>感恩您的上身，赋予它意义与温度</p>
       </div>
       <nav className="final-footer-links" aria-label="页脚导航">
-        <a href="https://www.douyin.com/search/Pansk88888?type=user" target="_blank" rel="noreferrer">
-          关于我们 <ArrowUpRight size={13} />
-        </a>
-        <a href="/shop">
-          全部商品 <ArrowUpRight size={13} />
-        </a>
-        <a href="#styled">
-          穿搭大片 <ArrowUpRight size={13} />
-        </a>
-        <a href="#community">
-          上身档案 <ArrowUpRight size={13} />
-        </a>
+        <div className="final-footer-column">
+          <h3>网站索引</h3>
+          <a href="#hero">
+            首页 <ArrowUpRight size={13} />
+          </a>
+          <a href="/shop">
+            立即购买 <ArrowUpRight size={13} />
+          </a>
+          <a href="#styled">
+            穿搭大片 <ArrowUpRight size={13} />
+          </a>
+          <a href="#community">
+            上身档案 <ArrowUpRight size={13} />
+          </a>
+        </div>
+        <div className="final-footer-column">
+          <h3>商店</h3>
+          <a href="/shop">
+            全部商品 <ArrowUpRight size={13} />
+          </a>
+          <span>淘宝店铺：Pansk</span>
+          <span>官方商城待上线</span>
+        </div>
+        <div className="final-footer-column">
+          <h3>联系</h3>
+          <span>微信：Pansk2023</span>
+          <a href="https://www.douyin.com/search/Pansk88888?type=user" target="_blank" rel="noreferrer">
+            抖音：PANSK88888 <ArrowUpRight size={13} />
+          </a>
+        </div>
       </nav>
-      <div className="final-footer-meta">
-        <a href="https://www.douyin.com/search/Pansk88888?type=user" target="_blank" rel="noreferrer">
-          Douyin: Pansk88888
-        </a>
-        <span>淘宝店铺</span>
-      </div>
       <a className="back-to-top" href="#hero" onClick={scrollToTop} data-cursor="顶部">
         回到顶部 <ArrowUpRight size={13} />
       </a>
