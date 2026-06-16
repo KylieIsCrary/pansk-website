@@ -7,7 +7,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import { categorizedProducts } from "./shop-data";
-import StackedLookbook from "./components/StackedLookbook";
+import LookbookPinnedSection from "./components/LookbookPinnedSection";
 import SpatialGallery from "./components/SpatialGallery";
 
 const asset = (name) => `/assets/${name}`;
@@ -783,7 +783,7 @@ export default function Home() {
           </div>
         </section>
 
-        <StackedLookbook />
+        <LookbookPinnedSection />
 
         <ArchiveTransition title="衣服最终要走进真实生活" subtitle="FROM OFFICIAL LOOKS TO REAL FITS" />
 
