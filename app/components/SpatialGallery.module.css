@@ -65,27 +65,20 @@
   text-transform: uppercase;
 }
 
-.canvas {
-  --canvas-x: 0px;
-  --canvas-y: 0px;
-  contain: layout paint style;
-  height: var(--canvas-height);
-  left: 50%;
+.layer {
+  inset: 0;
   position: absolute;
-  top: 50%;
-  transform: translate3d(calc(-50% + var(--canvas-x)), calc(-50% + var(--canvas-y)), 0);
-  width: var(--canvas-width);
-  will-change: transform;
+  transform: none;
   z-index: 2;
 }
 
 .node {
+  --screen-x: -9999px;
+  --screen-y: -9999px;
   backface-visibility: hidden;
-  left: calc(var(--x) + var(--tile-x));
   position: absolute;
-  top: calc(var(--y) + var(--tile-y));
   transform:
-    translate3d(var(--float-x, 0px), var(--float-y, 0px), 0)
+    translate3d(calc(var(--screen-x) + var(--float-x, 0px)), calc(var(--screen-y) + var(--float-y, 0px)), 0)
     rotate(var(--rotate))
     scale(var(--depth-scale));
   transform-origin: center;
@@ -99,7 +92,6 @@
   background: #f4f4f2;
   border: 0;
   color: inherit;
-  contain: layout paint style;
   cursor: pointer;
   height: var(--h);
   opacity: var(--depth-opacity);
@@ -200,7 +192,7 @@
 .item:hover {
   opacity: 1;
   transform:
-    translate3d(var(--float-x, 0px), var(--float-y, 0px), 0)
+    translate3d(calc(var(--screen-x) + var(--float-x, 0px)), calc(var(--screen-y) + var(--float-y, 0px)), 0)
     rotate(var(--rotate))
     scale(calc(var(--depth-scale) * 1.035));
   z-index: 8;
@@ -208,7 +200,7 @@
 
 .section.isDragging .item:hover {
   transform:
-    translate3d(var(--float-x, 0px), var(--float-y, 0px), 0)
+    translate3d(calc(var(--screen-x) + var(--float-x, 0px)), calc(var(--screen-y) + var(--float-y, 0px)), 0)
     rotate(var(--rotate))
     scale(var(--depth-scale));
 }
@@ -248,7 +240,7 @@
   opacity: 0.32;
 }
 
-@media (max-width: 760px) {
+  @media (max-width: 760px) {
   .section {
     cursor: auto;
     height: auto;
@@ -268,7 +260,7 @@
     position: static;
   }
 
-  .canvas {
+  .layer {
     display: flex;
     gap: 14px;
     height: auto;
@@ -287,10 +279,6 @@
     position: relative;
     top: auto;
     transform: none !important;
-  }
-
-  .cloneNode {
-    display: none;
   }
 
   .item {
@@ -318,10 +306,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .canvas {
-    transform: translate3d(-50%, -50%, 0) !important;
-  }
-
   .item,
   .item img,
   .caption {

@@ -441,6 +441,7 @@ export default function Home() {
       smoothWheel: true,
       wheelMultiplier: 0.86,
     });
+    lenis.on("scroll", ScrollTrigger.update);
     const raf = (time) => {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -455,7 +456,7 @@ export default function Home() {
     const ctx = gsap.context(() => {
       gsap.set(".page-wipe", { yPercent: 101 });
 
-      gsap
+      const introTimeline = gsap
         .timeline({ defaults: { ease: "power4.out" } })
         .to(".preloader img", { scale: 0.94, opacity: 0, duration: 0.7, delay: 0.2 })
         .to(".preloader", { yPercent: -100, duration: 0.85 }, "-=0.18")
@@ -466,8 +467,12 @@ export default function Home() {
           { y: 0, opacity: 1, duration: 0.8, clearProps: "transform,opacity" },
           "-=0.45"
         )
-        .from(".hero-copy .split-line > span", { yPercent: 110, duration: 1, stagger: 0.08 }, "-=0.55")
         .from(".hero-meta", { opacity: 0, y: 18, duration: 0.75, stagger: 0.04 }, "-=0.8");
+
+      const heroLines = gsap.utils.toArray(".hero-copy .split-line > span");
+      if (heroLines.length) {
+        introTimeline.from(heroLines, { yPercent: 110, duration: 1, stagger: 0.08 }, "-=0.55");
+      }
 
       gsap.to(".hero-image", {
         scale: 1,
@@ -729,7 +734,7 @@ export default function Home() {
                     alt=""
                     width={180}
                     height={240}
-                    quality={82}
+                    quality={88}
                   />
                 </span>
               </button>
@@ -777,8 +782,6 @@ export default function Home() {
             </button>
           </div>
         </section>
-
-        <ArchiveTransition title="从单品，到完整穿搭" subtitle="FROM PRODUCT TO STYLING" />
 
         <StackedLookbook />
 
