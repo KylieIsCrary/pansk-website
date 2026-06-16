@@ -461,27 +461,27 @@ export default function Home() {
     const hidePreloaderTimer = window.setTimeout(() => {
       const preloader = document.querySelector(".preloader");
       if (preloader) preloader.style.display = "none";
-    }, 1900);
+    }, 2090);
 
     const ctx = gsap.context(() => {
       gsap.set(".page-wipe", { yPercent: 101 });
 
       const introTimeline = gsap
         .timeline({ defaults: { ease: "power4.out" } })
-        .to(".preloader img", { scale: 0.94, opacity: 0, duration: 0.7, delay: 0.2 })
-        .to(".preloader", { yPercent: -100, duration: 0.85 }, "-=0.18")
+        .to(".preloader img", { scale: 0.94, opacity: 0, duration: 0.77, delay: 0.22 })
+        .to(".preloader", { yPercent: -100, duration: 0.94 }, "-=0.2")
         .set(".preloader", { display: "none" })
         .fromTo(
           ".site-header",
           { y: -32, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.8, clearProps: "transform,opacity" },
-          "-=0.45"
+          { y: 0, opacity: 1, duration: 0.88, clearProps: "transform,opacity" },
+          "-=0.5"
         )
-        .from(".hero-meta", { opacity: 0, y: 18, duration: 0.75, stagger: 0.04 }, "-=0.8");
+        .from(".hero-meta", { opacity: 0, y: 18, duration: 0.83, stagger: 0.044 }, "-=0.88");
 
       const heroLines = gsap.utils.toArray(".hero-copy .split-line > span");
       if (heroLines.length) {
-        introTimeline.from(heroLines, { yPercent: 110, duration: 1, stagger: 0.08 }, "-=0.55");
+        introTimeline.from(heroLines, { yPercent: 110, duration: 1.1, stagger: 0.088 }, "-=0.61");
       }
 
       gsap.to(".hero-image", {
