@@ -10,7 +10,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const asset = (name) => `/assets/${name}`;
 const INTRO_TITLE = "\u4ece\u5355\u54c1\uff0c\u5230\u5b8c\u6574\u7a7f\u642d";
-const FOOTER_LINE = "\u8863\u670d\u6700\u7ec8\u8981\u8d70\u8fdb\u771f\u5b9e\u751f\u6d3b";
 
 const looks = [
   {
@@ -165,7 +164,6 @@ export default function LookbookPinnedSection() {
 
                   <div className={styles.panelFooter}>
                     <span>FROM PRODUCT TO STYLING</span>
-                    <span>{FOOTER_LINE}</span>
                   </div>
                 </div>
 

@@ -298,7 +298,6 @@ function FinalBrandTraceFooter() {
       <div className="final-brand-poster">
         <h2>PANSK</h2>
         <p>感恩您的上身，赋予它意义与温度</p>
-        <span>丹宁 / 工装 / 去天涯海角</span>
       </div>
       <nav className="final-footer-links" aria-label="页脚导航">
         <a href="https://www.douyin.com/search/Pansk88888?type=user" target="_blank" rel="noreferrer">
@@ -650,7 +649,7 @@ export default function Home() {
         </div>
         <nav className="self-start justify-self-center pt-[1vh]" aria-label="菜单">
           {menuLinks.map((item) => {
-            const className = "menu-link block text-[clamp(58px,6.8vw,118px)] font-black uppercase leading-[0.86] transition duration-300 hover:translate-x-5 hover:text-signal";
+            const className = "menu-link block py-1 text-[clamp(52px,6vw,104px)] font-black uppercase leading-[0.98] transition duration-300 hover:translate-x-5 hover:text-signal";
             if (item.kind === "disabled") {
               return (
                 <button key={item.label} className={className} type="button" data-cursor="即将">
@@ -679,9 +678,8 @@ export default function Home() {
             );
           })}
         </nav>
-        <div className="grid grid-cols-3 items-end px-6 py-6 text-sm font-black uppercase leading-tight">
+        <div className="grid grid-cols-2 items-end px-6 py-6 text-sm font-black uppercase leading-tight">
           <span className="justify-self-start text-left">品牌档案<br />一起出发</span>
-          <span className="justify-self-center">Douyin: Pansk88888</span>
           <span className="justify-self-end">PANSK 2023</span>
         </div>
       </div>
@@ -788,8 +786,6 @@ export default function Home() {
         <ArchiveTransition title="衣服最终要走进真实生活" subtitle="FROM OFFICIAL LOOKS TO REAL FITS" />
 
         <SpatialGallery />
-
-        <ArchiveTransition title="感恩您的上身，赋予它意义与温度" subtitle="THANK YOU FOR WEARING PANSK" />
 
         <FinalBrandTraceFooter />
       </main>
